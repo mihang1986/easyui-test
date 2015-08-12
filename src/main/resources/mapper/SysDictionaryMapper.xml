@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sao.easyui.test.dao.SysDictionaryMapper" >
+  <resultMap id="BaseResultMap" type="com.sao.easyui.test.dao.entity.SysDictionary" >
+    <id column="DIC_TYPE" property="dicType" jdbcType="VARCHAR" />
+    <id column="DIC_VALUE" property="dicValue" jdbcType="VARCHAR" />
+    <result column="DIC_TRANS" property="dicTrans" jdbcType="VARCHAR" />
+    <result column="DIC_DESC" property="dicDesc" jdbcType="VARCHAR" />
+    <result column="MODIFY_TIME" property="modifyTime" jdbcType="TIMESTAMP" />
+    <result column="MODIFY_BY" property="modifyBy" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    DIC_TYPE, DIC_VALUE, DIC_TRANS, DIC_DESC, MODIFY_TIME, MODIFY_BY
+  </sql>
+  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="map" >
+    select 
+    <include refid="Base_Column_List" />
+    from T_SYS_DICTIONARY
+    where DIC_TYPE = #{dicType,jdbcType=VARCHAR}
+      and DIC_VALUE = #{dicValue,jdbcType=VARCHAR}
+  </select>
+  
+  <select id="selectAll" resultMap="BaseResultMap" parameterType="map" >
+    select 
+    <include refid="Base_Column_List" />
+    from T_SYS_DICTIONARY
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map" >
+    delete from T_SYS_DICTIONARY
+    where DIC_TYPE = #{dicType,jdbcType=VARCHAR}
+      and DIC_VALUE = #{dicValue,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.sao.easyui.test.dao.entity.SysDictionary" >
+    insert into T_SYS_DICTIONARY (DIC_TYPE, DIC_VALUE, DIC_TRANS, 
+      DIC_DESC, MODIFY_TIME, MODIFY_BY
+      )
+    values (#{dicType,jdbcType=VARCHAR}, #{dicValue,jdbcType=VARCHAR}, #{dicTrans,jdbcType=VARCHAR}, 
+      #{dicDesc,jdbcType=VARCHAR}, #{modifyTime,jdbcType=TIMESTAMP}, #{modifyBy,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.sao.easyui.test.dao.entity.SysDictionary" >
+    insert into T_SYS_DICTIONARY
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="dicType != null" >
+        DIC_TYPE,
+      </if>
+      <if test="dicValue != null" >
+        DIC_VALUE,
+      </if>
+      <if test="dicTrans != null" >
+        DIC_TRANS,
+      </if>
+      <if test="dicDesc != null" >
+        DIC_DESC,
+      </if>
+      <if test="modifyTime != null" >
+        MODIFY_TIME,
+      </if>
+      <if test="modifyBy != null" >
+        MODIFY_BY,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="dicType != null" >
+        #{dicType,jdbcType=VARCHAR},
+      </if>
+      <if test="dicValue != null" >
+        #{dicValue,jdbcType=VARCHAR},
+      </if>
+      <if test="dicTrans != null" >
+        #{dicTrans,jdbcType=VARCHAR},
+      </if>
+      <if test="dicDesc != null" >
+        #{dicDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null" >
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyBy != null" >
+        #{modifyBy,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sao.easyui.test.dao.entity.SysDictionary" >
+    update T_SYS_DICTIONARY
+    <set >
+      <if test="dicTrans != null" >
+        DIC_TRANS = #{dicTrans,jdbcType=VARCHAR},
+      </if>
+      <if test="dicDesc != null" >
+        DIC_DESC = #{dicDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null" >
+        MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyBy != null" >
+        MODIFY_BY = #{modifyBy,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where DIC_TYPE = #{dicType,jdbcType=VARCHAR}
+      and DIC_VALUE = #{dicValue,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sao.easyui.test.dao.entity.SysDictionary" >
+    update T_SYS_DICTIONARY
+    set DIC_TRANS = #{dicTrans,jdbcType=VARCHAR},
+      DIC_DESC = #{dicDesc,jdbcType=VARCHAR},
+      MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP},
+      MODIFY_BY = #{modifyBy,jdbcType=VARCHAR}
+    where DIC_TYPE = #{dicType,jdbcType=VARCHAR}
+      and DIC_VALUE = #{dicValue,jdbcType=VARCHAR}
+  </update>
+</mapper>
