@@ -49,4 +49,9 @@ public class DictionaryServiceImpl implements DictionaryService {
 				dictionary.get(type).get(value);
 	}
 
+	@Override
+	public List<SysDictionary> getDicsByType(String... types) {
+		return sysDictionaryMapper.selectByTypes(types);
+	}
+
 }

@@ -20,4 +20,6 @@ public interface SysDictionaryMapper {
     int updateByPrimaryKey(SysDictionary record);
     
     List<SysDictionary> selectAll();
+    
+    List<SysDictionary> selectByTypes(@Param("types") String... types);
 }
