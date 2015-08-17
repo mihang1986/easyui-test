@@ -1,13 +1,7 @@
 package com.sao.test;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.junit.Before;
 import org.junit.Test;
-
-import com.sao.easyui.test.controller.bean.Address;
-import com.sao.easyui.test.controller.bean.Student;
 
 public class TestCase02 {
 	@Before
@@ -35,24 +29,24 @@ public class TestCase02 {
 	
 	@Test
 	public void test03() throws IllegalArgumentException, IllegalAccessException, InstantiationException{
-		List<Address> addrs1 = new ArrayList<Address>();
-		addrs1.add(new Address("1", "2"));
-		addrs1.add(new Address("2", "3"));
-		
-		List<Address> addrs2 = new ArrayList<Address>();
-		addrs2.add(new Address("3", "2"));
-		addrs2.add(new Address("4", "3"));
-		
-		List<Student> students = new ArrayList<Student>();
-		Student stu1 = new Student("1", "mihang", "m", "1");
-		Student stu2 = new Student("2", "laowang", "f", "1");
-		
-		
-		stu1.setAddreses(addrs1);
-		stu2.setAddreses(addrs2);
-		
-		students.add(stu1);
-		students.add(stu2);
+//		List<Address> addrs1 = new ArrayList<Address>();
+//		addrs1.add(new Address("1", "2"));
+//		addrs1.add(new Address("2", "3"));
+//		
+//		List<Address> addrs2 = new ArrayList<Address>();
+//		addrs2.add(new Address("3", "2"));
+//		addrs2.add(new Address("4", "3"));
+//		
+//		List<Student> students = new ArrayList<Student>();
+//		Student stu1 = new Student("1", "mihang", "m", "1");
+//		Student stu2 = new Student("2", "laowang", "f", "1");
+//		
+//		
+//		stu1.setAddreses(addrs1);
+//		stu2.setAddreses(addrs2);
+//		
+//		students.add(stu1);
+//		students.add(stu2);
 		
 
 		
