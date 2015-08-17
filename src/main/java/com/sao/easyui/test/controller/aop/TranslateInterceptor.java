@@ -18,7 +18,7 @@ public class TranslateInterceptor {
 	@Resource
 	private ObjectTranslater objectTranslater;
 	
-	@Pointcut("execution(* com.sao.easyui.test.controller.*.*(..))")
+	@Pointcut("execution(* com.sao.easyui.test.controller.*Controller.*(..))")
 	private void jsonMethod(){};
 	
 	@Around("jsonMethod()")

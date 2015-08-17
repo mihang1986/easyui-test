@@ -1,5 +1,9 @@
 package com.sao.easyui.test.controller.interceptor;
 
+import java.util.Arrays;
+import java.util.Map;
+import java.util.Map.Entry;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -20,15 +24,34 @@ public class CommonInterceptor implements HandlerInterceptor{
 	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response,
 			Object object, ModelAndView mov) throws Exception {
-
+		String host = request.getRemoteHost();
+		String port = String.valueOf(request.getRemotePort());
+		logger.info(String.format("远程用户[%s]结束访问 URL -> %s", host + ":" + port, request.getRequestURI()));
+		
 	}
 
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response,
 			Object objcet) throws Exception {
-		logger.info(String.format("access uri : [%s]", request.getRequestURI()));
+		String host = request.getRemoteHost();
+		String port = String.valueOf(request.getRemotePort());
+		logger.info(String.format("远程用户[%s]正在访问 URL -> %s", host + ":" + port, request.getRequestURI()));
+
+		printParameters(request);
+		
 		
 		return true;
+	}
+	
+	/**
+	 * 打印请求参数
+	 * @param request
+	 */
+	private void printParameters(HttpServletRequest request){
+		Map<String, String[]> params = request.getParameterMap();
+		for(Entry entry : params.entrySet()){
+			logger.info(String.format("param key:[%s], value:[%s]", entry.getKey(), Arrays.toString((String[])entry.getValue())));
+		}
 	}
 
 }
