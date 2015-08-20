@@ -8,18 +8,17 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
+		
+	<aop:aspectj-autoproxy/>
 	
-	
-<!-- 	<aop:aspectj-autoproxy/>
-	
-	扫描所有AOP
+	<!--  扫描所有AOP -->
 	<context:component-scan base-package="com.sao.easyui.test.controller.aop" use-default-filters="false">
 		<context:include-filter type="annotation" expression="org.aspectj.lang.annotation.Aspect"/>
-	</context:component-scan>	 -->
+	</context:component-scan>
 	
 	<!-- 扫描springMVC控制器 -->
 	<!-- 当指定了use-default-filters="false"那么表示关闭默认的过滤器,只有当关闭了默认的过滤器以后,context:include-filter才能正确生效 -->
-	<context:component-scan base-package="com.sao.easyui.test.controller" use-default-filters="false">
+	<context:component-scan base-package="com.sao.easyui.test.controller,com.sao.easyui.test.api" use-default-filters="false">
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
 		<context:include-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice"/>
 	</context:component-scan>
@@ -59,8 +58,8 @@
 		<property name="exceptionMappings">  
 			<props>  
 				<prop key="java.lang.Throwable">error/500</prop>
-            </props>  
-		</property>  
+            </props>
+		</property>
     </bean>
 
 	<!-- 拦截器 -->
@@ -71,5 +70,4 @@
 			<bean class="com.sao.easyui.test.controller.interceptor.CommonInterceptor"/>
 		</mvc:interceptor>
 	</mvc:interceptors>
-
 </beans>

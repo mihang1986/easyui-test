@@ -15,8 +15,8 @@
 
 	<!-- spring监听器 加载其他spring配置 -->
 	<listener>
-		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-	</listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
@@ -39,7 +39,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>springMVCDispatcherServlet</servlet-name>
-		<url-pattern>/*</url-pattern>
+		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 
 	<!-- log4j配置 -->
@@ -68,5 +68,4 @@
 		<filter-name>CharacterFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
-	
 </web-app>
