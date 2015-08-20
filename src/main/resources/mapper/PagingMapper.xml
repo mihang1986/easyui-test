@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="paging">
+
+	<!-- Common sql fragments for paging, DO NOT MODIFY! 
+		start 开始记录
+		end 结束记录
+		orderby 排序字段  eg: order_no DESC
+	-->
+   	<sql id="orderby">
+   		<if test="orderby != null">order by ${orderby}</if>
+   	</sql>
+   	
+   	<sql id="header">
+		<if test="start != null or end != null">
+   			select * from (select vl.*, rownum as rowno from (
+   		</if>
+   	</sql>
+   	
+   	<sql id="footer">
+		<if test="start != null or end != null">
+			) vl
+			<where><if test="end != null">rownum &lt;= #{end}</if></where>)
+			<where><if test="start != null">rowno &gt; #{start}</if></where>
+   		</if>
+   	</sql>
+</mapper>
