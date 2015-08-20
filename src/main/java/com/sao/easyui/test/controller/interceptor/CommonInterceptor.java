@@ -39,6 +39,11 @@ public class CommonInterceptor implements HandlerInterceptor{
 
 		printParameters(request);
 		
+    	String path = request.getServletContext().getContextPath();
+    	String basePath = request.getScheme() + "://" 
+    			+ request.getServerName() + ":" 
+    			+ request.getServerPort() + path + "/";
+    	request.setAttribute("basePath", basePath);
 		
 		return true;
 	}
